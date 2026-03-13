@@ -1,5 +1,6 @@
 # Playwright UI Automation Framework
 
+![CI](https://github.com/kami-no-hikari/Playwright/actions/workflows/tests.yml/badge.svg)
 ![Python](https://img.shields.io/badge/Python-3.14-blue)
 ![Playwright](https://img.shields.io/badge/Playwright-Automation-green)
 ![Pytest](https://img.shields.io/badge/Pytest-Testing-orange)
@@ -74,7 +75,11 @@ Project Structure
 ```
 Playwright/
 │
-├── pages/                 # Page Object classes
+├── .github/
+│   └── workflows/
+│       └── tests.yml
+│
+├── pages/
 │   ├── base_page.py
 │   ├── login_page.py
 │   ├── dashboard_page.py
@@ -86,7 +91,7 @@ Playwright/
 │   ├── todo_page.py
 │   └── upload_download_page.py
 │
-├── tests/                 # Test scenarios
+├── tests/
 │   ├── auth/
 │   │   └── test_login.py
 │   └── forms/
@@ -97,6 +102,14 @@ Playwright/
 │       ├── test_table.py
 │       ├── test_upload_download.py
 │       └── test_todo.py
+│
+├── data/
+│   └── hello.txt
+│
+├── conftest.py
+├── requirements.txt
+├── .gitignore
+└── README.md
 ```
 ---
 Test Execution
@@ -116,3 +129,17 @@ pytest
 pytest --alluredir=allure-results
 allure serve allure-results
 ```
+---
+
+## CI Pipeline
+
+В проекте настроен **GitHub Actions CI pipeline**.
+
+При каждом **push** и **pull request** автоматически выполняется:
+
+- установка Python  
+- установка зависимостей  
+- установка браузеров Playwright  
+- запуск тестов через `pytest`
+
+---
