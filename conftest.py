@@ -1,4 +1,5 @@
 import pytest
+import os
 from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 from pages.checkbox_page import CheckboxPage
@@ -73,3 +74,15 @@ def applitools_page(page):
     applitools_page = ApplitoolsPage(page)
     applitools_page.open_page()
     return applitools_page
+
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    report = outcome.get_result()
+
+    if report.when == "call" and report.failed:
+        page = item.funcargs.get("page")
+        if page:
+            os.makedirs("screenshots", exist_ok=True)
+            page.screenshot(path=f"screenshots/{item.name}.png")
