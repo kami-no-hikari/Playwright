@@ -30,7 +30,7 @@ jobs:
 
       - name: Run tests with Allure
         run: |
-          pytest -v --alluredir=allure-results
+          pytest -n 2 -v --alluredir=allure-results
 
       - name: Install Java
         uses: actions/setup-java@v4
