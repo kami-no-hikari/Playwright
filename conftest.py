@@ -1,5 +1,6 @@
 import pytest
 import os
+import requests
 from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 from pages.checkbox_page import CheckboxPage
@@ -91,3 +92,19 @@ def pytest_runtest_makereport(item, call):
 @pytest.fixture
 def todo_mvc_page(page):
     return TodoMvcPage(page)
+
+"""API fixtures"""
+
+@pytest.fixture(scope="session")
+def api_base_url():
+    return "https://jsonplaceholder.typicode.com"
+
+
+@pytest.fixture(scope="session")
+def api_session():
+    session = requests.Session()
+    session.headers.update({
+        "Content-Type": "application/json"
+    })
+    yield session
+    session.close()
