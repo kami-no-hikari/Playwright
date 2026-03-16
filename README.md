@@ -1,84 +1,36 @@
 # Playwright UI Automation Framework
 
 ![CI](https://github.com/kami-no-hikari/Playwright/actions/workflows/tests.yml/badge.svg)
-![Python](https://img.shields.io/badge/Python-3.14-blue)
-![Playwright](https://img.shields.io/badge/Playwright-Automation-green)
-![Pytest](https://img.shields.io/badge/Pytest-Testing-orange)
-![Framework](https://img.shields.io/badge/Test%20Framework-POM-lightgrey)
+![Python](https://img.shields.io/badge/python-3.14-blue)
+![Playwright](https://img.shields.io/badge/playwright-automation-green)
+![Pytest](https://img.shields.io/badge/pytest-framework-orange)
 
-Практический проект по UI-автоматизации на **Python** с использованием **Playwright**, **Pytest** и архитектуры **Page Object Model (POM)**.
-
-Проект создан для демонстрации навыков разработки и организации **automation framework для UI-тестирования веб-приложений**.
-
-Основной акцент сделан не на полном покрытии сайта тестами, а на:
-
-- построении структуры тестового проекта
-- реализации архитектуры **Page Object Model**
-- работе с локаторами и методами **Playwright**
-- использовании **fixtures Pytest**
-- организации тестов и повторно используемых компонентов
-- генерации тестовых отчетов
+Практический проект по автоматизации тестирования на **Python** с использованием **Playwright**, **Pytest** и архитектуры **Page Object Model (POM)**.
+Проект демонстрирует навыки разработки **UI и API автотестов**, организацию **CI pipeline**, а также генерацию и публикацию **Allure отчётов**.
 
 ---
 
-# Technology Stack
+## Technology Stack
 
 - Python
 - Playwright
 - Pytest
 - Page Object Model (POM)
+- Requests (API тестирование)
 - Allure Report
+- GitHub Actions CI
+- GitHub Pages (публикация отчётов)
 
 ---
 
-# Implemented Test Scenarios
-
-В проекте реализованы тестовые сценарии для отработки различных типов взаимодействия с веб-интерфейсом:
-
-- авторизация пользователя
-- проверка элементов интерфейса после логина
-- работа с **checkbox / radio / switch**
-- работа с **select и multi-select**
-- взаимодействие с **таблицами**
-- работа с **диалоговыми окнами**
-- **drag and drop**
-- **upload / download файлов**
-- работа с **todo-элементами**
-- создание **скриншотов элементов**
-
-Проект используется для демонстрации различных методов Playwright:
-
-- поиск элементов
-- взаимодействие с UI
-- ожидания элементов
-- assertions
-- работа со страницами через **Page Object Model**
----
-
-
-
-# Example Test
-
-Пример теста авторизации с использованием Page Object Model.
-
-```python
-def test_login(page):
-    login_page = LoginPage(page)
-
-    login_page.open()
-    login_page.login("admin", "password123")
-
-    assert login_page.is_logged_in()
+## Project Structure
 
 ```
-Project Structure
-```
-Playwright/
+Playwright
 │
-├── .github/
-│   └── workflows/
-│       └── tests.yml
+├── pages                # Page Object модели
 │
+<<<<<<< HEAD
 ├── pages/
 │   ├── base_page.py
 │   ├── login_page.py
@@ -110,13 +62,26 @@ Playwright/
 ├── data/
 │   ├── downloads/
 │   └── hello.txt
+=======
+├── tests
+│   ├── api              # API тесты
+│   │   └── test_posts_api.py
+│   │
+│   ├── auth             # тесты авторизации
+│   └── forms            # UI тесты
 │
+├── .github/workflows
+│   └── tests.yml        # CI pipeline
+>>>>>>> 77123ea68d989b09bb48b4f0098c2474f4edfd27
+│
+├── data
 ├── conftest.py
 ├── requirements.txt
-├── .gitignore
 └── README.md
 ```
+
 ---
+<<<<<<< HEAD
 ## Assertions
 В проекте используются Playwright assertions через `expect()`.
 
@@ -135,17 +100,28 @@ Test Execution
 ```
 pip install -r requirements.txt
 ```
+=======
 
-Запуск тестов:
-```
-pytest
-```
+## Implemented Test Types
+>>>>>>> 77123ea68d989b09bb48b4f0098c2474f4edfd27
 
-Запуск тестов с генерацией отчета Allure:
-```
-pytest --alluredir=allure-results
-allure serve allure-results
-```
+### UI Testing
+
+- тестирование веб-интерфейса через Playwright
+- архитектура **Page Object Model**
+- работа с различными UI элементами
+- загрузка и скачивание файлов
+- drag and drop
+- таблицы
+- формы
+- скриншоты при падении тестов
+
+### API Testing
+
+- тестирование REST API через `requests`
+- проверка HTTP статусов
+- проверка JSON ответов
+
 ---
 
 ## CI Pipeline
@@ -154,9 +130,59 @@ allure serve allure-results
 
 При каждом **push** и **pull request** автоматически выполняется:
 
-- установка Python  
-- установка зависимостей  
-- установка браузеров Playwright  
-- запуск тестов через `pytest`
+1. установка Python
+2. установка зависимостей проекта
+3. установка браузеров Playwright
+4. запуск тестов через pytest
+5. генерация Allure отчёта
+6. публикация отчёта на GitHub Pages
 
 ---
+
+## Allure Report
+
+После каждого запуска CI автоматически публикуется **HTML отчёт Allure**.
+
+Открыть отчёт:
+
+https://kami-no-hikari.github.io/Playwright/
+
+---
+
+## Running Tests Locally
+
+Установка зависимостей:
+
+```
+pip install -r requirements.txt
+```
+
+Установка браузеров Playwright:
+
+```
+playwright install
+```
+
+Запуск тестов:
+
+```
+pytest -n 2 -v --alluredir=allure-results
+```
+
+Просмотр Allure отчёта:
+
+```
+allure serve allure-results
+```
+
+---
+
+## Key Features
+
+- UI automation framework на Python
+- использование **Playwright API**
+- архитектура **Page Object Model**
+- API тестирование через **requests**
+- параллельный запуск тестов
+- CI pipeline через **GitHub Actions**
+- публикация **Allure отчётов**
