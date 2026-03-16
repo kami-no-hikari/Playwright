@@ -89,12 +89,16 @@ Playwright/
 │   ├── drag_and_drop_page.py
 │   ├── table_page.py
 │   ├── todo_page.py
+│   ├── todo_mvc_page.py
 │   └── upload_download_page.py
 │
 ├── tests/
 │   ├── auth/
 │   │   └── test_login.py
-│   └── forms/
+│    └── forms/
+│       ├── widgets/
+│       │   ├── test_todo.py
+│       │   └── test_todo_mvc_assertions.py
 │       ├── test_checkbox.py
 │       ├── test_select_option.py
 │       ├── test_dialogs.py
@@ -104,6 +108,7 @@ Playwright/
 │       └── test_todo.py
 │
 ├── data/
+│   ├── downloads/
 │   └── hello.txt
 │
 ├── conftest.py
@@ -112,8 +117,20 @@ Playwright/
 └── README.md
 ```
 ---
-Test Execution
+## Assertions
+В проекте используются Playwright assertions через `expect()`.
 
+Примеры проверок, используемых в проекте:
+- `expect(page).to_have_url()`
+- `expect(locator).to_be_empty()`
+- `expect(locator).to_have_count()`
+- `expect(locator).to_have_class()`
+- `expect(locator).to_be_checked()`
+- `expect(locator).to_have_text()`
+
+Assertions позволяют делать тесты стабильнее за счет auto-waiting.
+Test Execution
+---
 Установка зависимостей:
 ```
 pip install -r requirements.txt

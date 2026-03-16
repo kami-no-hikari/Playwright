@@ -10,6 +10,7 @@ from pages.drag_and_drop_page import DragAndDrop
 from pages.dialog_page import DialogPage
 from pages.table_page import TablePage
 from pages.applitools_page import ApplitoolsPage
+from pages.todo_mvc_page import TodoMvcPage
 
 @pytest.fixture
 def login_page(page):
@@ -86,3 +87,7 @@ def pytest_runtest_makereport(item, call):
         if page:
             os.makedirs("screenshots", exist_ok=True)
             page.screenshot(path=f"screenshots/{item.name}.png")
+
+@pytest.fixture
+def todo_mvc_page(page):
+    return TodoMvcPage(page)
