@@ -30,7 +30,6 @@ Playwright
 │
 ├── pages                # Page Object модели
 │
-<<<<<<< HEAD
 ├── pages/
 │   ├── base_page.py
 │   ├── login_page.py
@@ -80,7 +79,6 @@ Playwright
 ```
 
 ---
-<<<<<<< HEAD
 ## Assertions
 В проекте используются Playwright assertions через `expect()`.
 
