@@ -72,7 +72,6 @@ Playwright
 │
 ├── .github/workflows
 │   └── tests.yml        # CI pipeline
->>>>>>> 77123ea68d989b09bb48b4f0098c2474f4edfd27
 │
 ├── data
 ├── conftest.py
@@ -103,8 +102,6 @@ pip install -r requirements.txt
 =======
 
 ## Implemented Test Types
->>>>>>> 77123ea68d989b09bb48b4f0098c2474f4edfd27
-
 ### UI Testing
 
 - тестирование веб-интерфейса через Playwright
