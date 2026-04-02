@@ -28,7 +28,7 @@
 ```
 Playwright
 │
-├── pages                # Page Object модели
+├── pages                   # Page Object модели
 │
 ├── pages/
 │   ├── base_page.py
@@ -44,35 +44,34 @@ Playwright
 │   └── upload_download_page.py
 │
 ├── tests/
-│   ├── auth/
-│   │   └── test_login.py
-│    └── forms/
-│       ├── widgets/
-│       │   ├── test_todo.py
-│       │   └── test_todo_mvc_assertions.py
-│       ├── test_checkbox.py
-│       ├── test_select_option.py
-│       ├── test_dialogs.py
-│       ├── test_drag_and_drop.py
-│       ├── test_table.py
-│       ├── test_upload_download.py
-│       └── test_todo.py
-│
-├── data/
-│   ├── downloads/
-│   └── hello.txt
-=======
-├── tests
-│   ├── api              # API тесты
+│   ├── api/ # API тесты
 │   │   └── test_posts_api.py
 │   │
-│   ├── auth             # тесты авторизации
-│   └── forms            # UI тесты
+│   ├── auth/                   # тесты авторизации
+│   │   └── test_login.py
+│   │
+│   ├── forms/                  # UI тесты
+│   │   ├── widgets/
+│   │   │     ├── test_todo.py
+│   │   │     └── test_todo_mvc_assertions.py
+│   │   ├── test_checkbox.py
+│   │   ├── test_select_option.py
+│   │   ├── test_dialogs.py
+│   │   ├── test_drag_and_drop.py
+│   │   ├── test_table.py
+│   │   └── test_upload_download.py
+│   │
+│   └── network/                # network тесты
+│       ├── test_network_listen.py
+│       ├── test_network_abort.py
+│       ├── test_network_mock_response.py
+│       └── test_network_modify_request.py
 │
-├── .github/workflows
-│   └── tests.yml        # CI pipeline
+├── .github/
+│   └── workflows/
+│       └── tests.yml            # CI pipeline
 │
-├── data
+├── utils/
 ├── conftest.py
 ├── requirements.txt
 └── README.md
@@ -116,6 +115,17 @@ pip install -r requirements.txt
 - тестирование REST API через `requests`
 - проверка HTTP статусов
 - проверка JSON ответов
+---
+
+### Network Testing
+
+- перехват сетевых запросов через `page.route()`
+- проверка отправки запросов (listen)
+- блокировка запросов (`route.abort()`)
+- подмена ответов сервера (`route.fulfill()`)
+- базовая работа с модификацией запросов
+
+Network тесты выполняются на уровне браузера и позволяют тестировать поведение приложения без зависимости от backend.
 
 ---
 
